@@ -26,22 +26,28 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="5">
+    <RequiredPackages Count="7">
       <Item1>
-        <PackageName Value="pl_rx"/>
+        <PackageName Value="pl_virtualtreesextra"/>
       </Item1>
       <Item2>
-        <PackageName Value="pl_bgracontrols"/>
+        <PackageName Value="pl_virtualtrees"/>
       </Item2>
       <Item3>
-        <PackageName Value="MyLazPackage"/>
+        <PackageName Value="pl_rx"/>
       </Item3>
       <Item4>
-        <PackageName Value="pl_cindy"/>
+        <PackageName Value="pl_bgracontrols"/>
       </Item4>
       <Item5>
-        <PackageName Value="adLCL"/>
+        <PackageName Value="MyLazPackage"/>
       </Item5>
+      <Item6>
+        <PackageName Value="pl_cindy"/>
+      </Item6>
+      <Item7>
+        <PackageName Value="adLCL"/>
+      </Item7>
     </RequiredPackages>
     <Units Count="2">
       <Unit0>

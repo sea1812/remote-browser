@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, cyPanel, Forms, Controls, Graphics, Dialogs,
-  ComCtrls, nkTitleBar, nkResizer, rxctrls, BCLabel;
+  ComCtrls, ExtCtrls, nkTitleBar, nkResizer, vte_treedata, VirtualTrees,
+  rxctrls, BCLabel;
 
 type
 
@@ -16,12 +17,18 @@ type
     BCLabel1: TBCLabel;
     CyPanel1: TCyPanel;
     ImageList1: TImageList;
+    ListView1: TListView;
     nkResizer2: TnkResizer;
     nkTitleBar2: TnkTitleBar;
+    PageControl1: TPageControl;
+    Panel1: TPanel;
     RxSpeedButton1: TRxSpeedButton;
     RxSpeedButton2: TRxSpeedButton;
     RxSpeedButton3: TRxSpeedButton;
+    Splitter1: TSplitter;
     StatusBar: TCyPanel;
+    StatusBar1: TCyPanel;
+    TabSheet1: TTabSheet;
     ToolAddNode: TToolButton;
     ToolAddRemote: TToolButton;
     ToolAddUSer: TToolButton;

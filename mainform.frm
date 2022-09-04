@@ -230,7 +230,7 @@ object frmMain: TfrmMain
       Left = 4
       Height = 34
       Top = 0
-      Width = 133
+      Width = 135
       Background.Color = clBlack
       Background.ColorOpacity = 255
       Background.Gradient1.StartColor = clWhite
@@ -266,7 +266,7 @@ object frmMain: TfrmMain
       Border.LightWidth = 0
       Border.Style = bboNone
       Border.Width = 1
-      Caption = 'RemoteDesktop'
+      Caption = 'Remote Browser'
       FontEx.Color = clBlack
       FontEx.EndEllipsis = False
       FontEx.FontQuality = fqSystemClearType
@@ -742,6 +742,76 @@ object frmMain: TfrmMain
       Width = 20
       Anchors = [akRight, akBottom]
       Stretch = True
+    end
+  end
+  object Panel1: TPanel
+    Left = 5
+    Height = 479
+    Top = 86
+    Width = 297
+    Align = alLeft
+    BorderSpacing.Left = 5
+    BorderSpacing.Top = 4
+    BorderSpacing.InnerBorder = 5
+    BevelOuter = bvNone
+    ClientHeight = 479
+    ClientWidth = 297
+    TabOrder = 3
+    object ListView1: TListView
+      Left = 0
+      Height = 451
+      Top = 28
+      Width = 297
+      Align = alClient
+      Columns = <      
+        item
+        end      
+        item
+        end      
+        item
+        end      
+        item
+        end>
+      HideSelection = False
+      ReadOnly = True
+      RowSelect = True
+      TabOrder = 0
+      ViewStyle = vsReport
+    end
+    object StatusBar1: TCyPanel
+      Left = 0
+      Height = 28
+      Top = 0
+      Width = 297
+      Align = alTop
+      DoubleBuffered = True
+      TabOrder = 1
+      Bevels = <>
+      Degrade.Balance = 100
+      Degrade.BalanceMode = bmMirror
+      Degrade.FromColor = clBtnFace
+      Degrade.SpeedPercent = 1
+      Degrade.ToColor = clMoneyGreen
+    end
+  end
+  object Splitter1: TSplitter
+    Left = 302
+    Height = 483
+    Top = 82
+    Width = 6
+  end
+  object PageControl1: TPageControl
+    Left = 308
+    Height = 483
+    Top = 82
+    Width = 593
+    ActivePage = TabSheet1
+    Align = alClient
+    BorderSpacing.Right = 5
+    TabIndex = 0
+    TabOrder = 5
+    object TabSheet1: TTabSheet
+      Caption = 'TabSheet1'
     end
   end
   object ImageList1: TImageList
