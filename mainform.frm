@@ -1,8 +1,8 @@
 object frmMain: TfrmMain
   Left = 685
-  Height = 300
+  Height = 604
   Top = 227
-  Width = 400
+  Width = 721
   Caption = 'frmMain'
   DesignTimePPI = 120
   LCLVersion = '6.3'
