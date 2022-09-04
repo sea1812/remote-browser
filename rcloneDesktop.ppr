@@ -13,6 +13,8 @@ uses
 {$R *.res}
 
 begin
+  Application.Title:='Rclone Desktop';
+  Application.Scaled:=True;
   RequireDerivedFormResource:=True;
   Application.Initialize;
   Application.CreateForm(TfrmMain, frmMain);
