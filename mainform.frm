@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 86
+  Left = 740
   Height = 604
-  Top = 85
+  Top = 262
   Width = 906
   BorderStyle = bsNone
   Caption = 'frmMain'
@@ -571,6 +571,7 @@ object frmMain: TfrmMain
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
       }
+      OnClick = RxSpeedButton3Click
       ShowCaption = False
       ShowHint = True
       ParentShowHint = False
@@ -715,6 +716,7 @@ object frmMain: TfrmMain
         0000000000000000000000000000000000000000000000000000000000000000
         0000000000000000000000000000000000000000000000000000
       }
+      OnClick = RxSpeedButton2Click
       ShowCaption = False
       ShowHint = True
       ParentShowHint = False
@@ -746,31 +748,38 @@ object frmMain: TfrmMain
   end
   object Panel1: TPanel
     Left = 5
-    Height = 479
-    Top = 86
-    Width = 297
+    Height = 483
+    Top = 82
+    Width = 437
     Align = alLeft
     BorderSpacing.Left = 5
-    BorderSpacing.Top = 4
     BorderSpacing.InnerBorder = 5
     BevelOuter = bvNone
-    ClientHeight = 479
-    ClientWidth = 297
+    ClientHeight = 483
+    ClientWidth = 437
     TabOrder = 3
     object ListView1: TListView
       Left = 0
-      Height = 451
+      Height = 455
       Top = 28
-      Width = 297
+      Width = 437
       Align = alClient
       Columns = <      
         item
+          Caption = '类型'
+          Width = 60
         end      
         item
+          Caption = '别名'
+          Width = 80
         end      
         item
+          Caption = '本地盘符'
+          Width = 80
         end      
         item
+          Caption = '备注'
+          Width = 180
         end>
       HideSelection = False
       ReadOnly = True
@@ -782,8 +791,10 @@ object frmMain: TfrmMain
       Left = 0
       Height = 28
       Top = 0
-      Width = 297
+      Width = 437
       Align = alTop
+      Alignment = taLeftJustify
+      Caption = 'Remotes'
       DoubleBuffered = True
       TabOrder = 1
       Bevels = <>
@@ -795,16 +806,16 @@ object frmMain: TfrmMain
     end
   end
   object Splitter1: TSplitter
-    Left = 302
+    Left = 442
     Height = 483
     Top = 82
     Width = 6
   end
   object PageControl1: TPageControl
-    Left = 308
+    Left = 448
     Height = 483
     Top = 82
-    Width = 593
+    Width = 453
     ActivePage = TabSheet1
     Align = alClient
     BorderSpacing.Right = 5

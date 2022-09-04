@@ -5,9 +5,9 @@ unit mainform;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, cyPanel, Forms, Controls, Graphics, Dialogs,
-  ComCtrls, ExtCtrls, nkTitleBar, nkResizer, vte_treedata, VirtualTrees,
-  rxctrls, BCLabel;
+  Classes, SysUtils, FileUtil, cyPanel, cyNavPanel, Forms, Controls, Graphics,
+  Dialogs, ComCtrls, ExtCtrls, nkTitleBar, nkResizer, FZCommon, FZBase,
+  TplTabControlUnit, vte_treedata, VirtualTrees, rxctrls, BCLabel;
 
 type
 
@@ -54,7 +54,11 @@ type
     ToolSyncAll: TToolButton;
     ToolSyncData: TToolButton;
     procedure RxSpeedButton1Click(Sender: TObject);
+    procedure RxSpeedButton2Click(Sender: TObject);
+    procedure RxSpeedButton3Click(Sender: TObject);
   private
+    WinMax : boolean;
+    OldLeft,OldTop,OldWidth,OldHeight:integer;
 
   public
 
@@ -72,6 +76,35 @@ implementation
 procedure TfrmMain.RxSpeedButton1Click(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TfrmMain.RxSpeedButton2Click(Sender: TObject);
+begin
+  if WinMax = False then
+  begin
+    OldLeft := Self.Left;
+    OldTop  := Self.Top;
+    OldWidth := Self.Width;
+    OldHeight := Self.Height;
+    Self.Top:=Self.Monitor.WorkareaRect.Top;
+    Self.Left:=Self.Monitor.WorkareaRect.Left;
+    Self.Width:=Self.Monitor.WorkareaRect.Width;
+    Self.Height:=Self.Monitor.WorkareaRect.Height;
+    WinMax := True;
+  end
+  else
+  begin
+    Self.Top:=OldTop;
+    Self.Left:=OldLeft;
+    Self.Width:=OldWidth;
+    Self.Height:=OldHeight;
+    WinMax := False;
+  end;
+end;
+
+procedure TfrmMain.RxSpeedButton3Click(Sender: TObject);
+begin
+  Application.Minimize;
 end;
 
 end.

@@ -26,28 +26,34 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="7">
+    <RequiredPackages Count="9">
       <Item1>
-        <PackageName Value="pl_virtualtreesextra"/>
+        <PackageName Value="pl_fzcontrols"/>
       </Item1>
       <Item2>
-        <PackageName Value="pl_virtualtrees"/>
+        <PackageName Value="pl_excontrols"/>
       </Item2>
       <Item3>
-        <PackageName Value="pl_rx"/>
+        <PackageName Value="pl_virtualtreesextra"/>
       </Item3>
       <Item4>
-        <PackageName Value="pl_bgracontrols"/>
+        <PackageName Value="pl_virtualtrees"/>
       </Item4>
       <Item5>
-        <PackageName Value="MyLazPackage"/>
+        <PackageName Value="pl_rx"/>
       </Item5>
       <Item6>
-        <PackageName Value="pl_cindy"/>
+        <PackageName Value="pl_bgracontrols"/>
       </Item6>
       <Item7>
-        <PackageName Value="adLCL"/>
+        <PackageName Value="MyLazPackage"/>
       </Item7>
+      <Item8>
+        <PackageName Value="pl_cindy"/>
+      </Item8>
+      <Item9>
+        <PackageName Value="adLCL"/>
+      </Item9>
     </RequiredPackages>
     <Units Count="2">
       <Unit0>
@@ -58,6 +64,7 @@
         <Filename Value="mainform.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmMain"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit1>
     </Units>
