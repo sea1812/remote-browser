@@ -6,7 +6,7 @@ interface
 
 uses
   Interfaces, Classes, SysUtils, FileUtil, cyPanel, ZDataset, Forms, Controls,
-  Graphics, StdCtrls, Dialogs, nkTitleBar, rxctrls, BCLabel;
+  Graphics, StdCtrls, Dialogs, ExtCtrls, nkTitleBar, rxctrls, BCLabel;
 
 type
 
@@ -15,7 +15,20 @@ type
   TfrmEdit = class(TForm)
     BCLabel1: TBCLabel;
     Button1: TButton;
+    Button2: TButton;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    Image1: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
     nkTitleBar2: TnkTitleBar;
+    Panel1: TPanel;
     Qry: TZQuery;
     RxSpeedButton1: TRxSpeedButton;
     RxSpeedButton2: TRxSpeedButton;

@@ -775,7 +775,7 @@ object frmMain: TfrmMain
           Width = 60
         end      
         item
-          Caption = '别名'
+          Caption = '标识名称'
           Width = 80
         end      
         item

@@ -98,6 +98,7 @@ begin
   InitDB;
   InitPlugins;
   InitPopAddRemote;
+  RxSpeedButton2Click(nil);
 end;
 
 procedure TfrmMain.RxSpeedButton2Click(Sender: TObject);
