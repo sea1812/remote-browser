@@ -578,7 +578,7 @@ object frmEdit: TfrmEdit
     Caption = '标识名称'
     ParentColor = False
   end
-  object Edit1: TEdit
+  object EditName: TEdit
     Left = 223
     Height = 28
     Top = 65
@@ -586,7 +586,7 @@ object frmEdit: TfrmEdit
     TabOrder = 4
     TextHint = '仅用于标识，可用汉字、字母或数字'
   end
-  object Edit2: TEdit
+  object EditAlias: TEdit
     Left = 223
     Height = 28
     Top = 104
@@ -604,7 +604,7 @@ object frmEdit: TfrmEdit
     Caption = '网址路径'
     ParentColor = False
   end
-  object Edit3: TEdit
+  object EditUrl: TEdit
     Left = 223
     Height = 28
     Top = 144
@@ -620,7 +620,7 @@ object frmEdit: TfrmEdit
     Caption = '账号'
     ParentColor = False
   end
-  object Edit4: TEdit
+  object EditUsername: TEdit
     Left = 223
     Height = 28
     Top = 184
@@ -636,7 +636,7 @@ object frmEdit: TfrmEdit
     Caption = '密码'
     ParentColor = False
   end
-  object Edit5: TEdit
+  object EditPwd: TEdit
     Left = 223
     Height = 28
     Top = 224

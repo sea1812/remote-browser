@@ -16,11 +16,11 @@ type
     BCLabel1: TBCLabel;
     Button1: TButton;
     Button2: TButton;
-    Edit1: TEdit;
-    Edit2: TEdit;
-    Edit3: TEdit;
-    Edit4: TEdit;
-    Edit5: TEdit;
+    EditName: TEdit;
+    EditAlias: TEdit;
+    EditUrl: TEdit;
+    EditUsername: TEdit;
+    EditPwd: TEdit;
     Image1: TImage;
     Label1: TLabel;
     Label2: TLabel;
@@ -81,21 +81,33 @@ end;
 
 procedure TfrmEdit.Button1Click(Sender: TObject);
 begin
-  if Qry.Connection.Connected then
+  //检查输入是否完整
+  if Trim(EditName.Text)='' then
   begin
-    with qry do
-    begin
-      Close;
-      Sql.Clear;
-      Sql.Add('select count(*) as aa from users');
-      Open;
-      First;
-      if not Eof then
-      begin
-        ShowMessage(inttostr(FieldByName('aa').AsInteger));
-      end;
-    end;
+    MessageDlg('请输入标识名称。',mtWarning,[mbOK],0);
+    EditName.SetFocus;
+    Exit;
   end;
+  if Trim(EditUrl.Text)='' then
+  begin
+    MessageDlg('请输入网址路径。',mtWarning,[mbOK],0);
+    EditUrl.SetFocus;
+    Exit;
+  end;
+  if Trim(EditUsername.Text)='' then
+  begin
+    MessageDlg('请输入登录账号。',mtWarning,[mbOK],0);
+    EditUsername.SetFocus;
+    Exit;
+  end;
+  if Trim(EditPwd.Text)='' then
+  begin
+    MessageDlg('请输入登录密码。',mtWarning,[mbOK],0);
+    EditPwd.SetFocus;
+    Exit;
+  end;
+  //检查输入的标识名称是否存在
+
 end;
 
 begin
