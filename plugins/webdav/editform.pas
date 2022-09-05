@@ -43,6 +43,7 @@ implementation
 
 procedure TfrmEdit.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
+  CloseAction:=caFree;
 end;
 
 procedure TfrmEdit.FormShow(Sender: TObject);

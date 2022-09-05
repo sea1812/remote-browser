@@ -24,7 +24,48 @@ type
   TPlugInfo  = function (): PChar; stdcall;
   TPlugEdit  = function (Handle:HWND;ADBConn:TZConnection):Pchar; stdcall;
 
+  { TGoGoPlugins }
+
+  TGoGoPlugins = class(TComponent)
+  private
+    FList:TList;
+  public
+    constructor Create(AOwner:TComponent);override;
+    destructor  Destroy;override;
+    procedure   Clear;
+  end;
+
 implementation
+
+{ TGoGoPlugins }
+
+constructor TGoGoPlugins.Create(AOwner: TComponent);
+begin
+  inherited Create(AOwner);
+  FList:=TList.Create;
+end;
+
+destructor TGoGoPlugins.Destroy;
+begin
+  Clear;
+  FList.Free;
+  inherited Destroy;
+end;
+
+procedure TGoGoPlugins.Clear;
+var
+  i:integer;
+begin
+  for i:=FList.Count-1 downto 0 do
+  begin
+    if Assigned(FList.Items[i]) then
+    try
+      TGoGoPluginItem(FList.Items[i]).Free;
+    except
+      FreeAndNil(FList.Items[i]^);
+    end;
+  end;
+end;
 
 { TGoGoPluginItem }
 

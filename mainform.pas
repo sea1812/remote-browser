@@ -86,7 +86,9 @@ uses
 
 procedure TfrmMain.RxSpeedButton1Click(Sender: TObject);
 begin
+  //Hide;
   Close;
+  //Application.Terminate;
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
@@ -130,11 +132,17 @@ var
 begin
   //测试plugin
   mPlugin:=TGoGoPluginItem.Create(Self,ExtractFilepath(Application.ExeName)+'webdav.dll');
+// -----------------------------
 //  m:=mPlugin.PlugInfo();
 //  ShowMessage('Plugin.PlugInfo 说: '+#10#13+#10#13+AnsiToUTF8(DecodeStringBase64(m)));
+//  mPlugin.Free;
+//  mPlugin:=nil;
+// -----------------------------
   m:=mPlugin.Edit(Self.Handle,Dm.conn);
   showmessage(m);
-  mPlugin.Free;
+  //窗口自释放，无需mPlugin.Free;
+  // -----------------------------
+
 end;
 
 procedure TfrmMain.InitDB;

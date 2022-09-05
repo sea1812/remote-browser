@@ -1,7 +1,7 @@
 object frmEdit: TfrmEdit
-  Left = 652
+  Left = 685
   Height = 495
-  Top = 245
+  Top = 227
   Width = 613
   BorderStyle = bsNone
   Caption = 'Form1'
