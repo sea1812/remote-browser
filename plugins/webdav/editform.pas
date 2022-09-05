@@ -18,6 +18,7 @@ type
     Button2: TButton;
     EditName: TEdit;
     EditAlias: TEdit;
+    EditComment: TEdit;
     EditUrl: TEdit;
     EditUsername: TEdit;
     EditPwd: TEdit;
@@ -27,6 +28,7 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    Label6: TLabel;
     nkTitleBar2: TnkTitleBar;
     Panel1: TPanel;
     Qry: TZQuery;
@@ -44,6 +46,9 @@ type
 
   public
     ID:integer;
+    function  RnameExists(AValue:string):boolean;//检查rname是否存在
+    procedure DoInsert(AName,AUrl,AUser,APwd,AComment:string);//插入记录
+    function  BuildParams(AUrl,AUser,APwd:string):string;//组合成设置JSON字符串
   end;
 
 var
@@ -72,11 +77,77 @@ begin
   else
     BCLabel1.Caption:='编辑 WebDav 存储';
   Caption:=BCLabel1.Caption;
+  EditName.SetFocus;
 end;
 
 procedure TfrmEdit.RxSpeedButton1Click(Sender: TObject);
 begin
   ModalResult:=mrCancel;
+end;
+
+function TfrmEdit.RnameExists(AValue: string): boolean;
+begin
+  Result:=True;
+  with Qry do
+  begin
+    Close;
+    Sql.Clear;
+    Sql.Add('select count(*) as aa from remotes2 where rname=:rname');
+    Params.ParamByName('rname').AsString:=Trim(AValue);
+    Open;
+    First;
+    if not Eof then
+    begin
+      Result := FieldByName('aa').AsInteger>0;
+    end;
+  end;
+end;
+
+procedure TfrmEdit.DoInsert(AName, AUrl, AUser, APwd, AComment: string);
+var
+  mId:integer;
+  mAlias:string;
+begin
+  with Qry do
+  begin
+    Close;
+    Sql.Clear;
+    //先插入
+    Sql.Add('insert into remotes2 (rname,rtype,ralias,rparams,rletter,rcomment) values (:rname,:rtype,:ralias,:rparams,:rletter,:rcomment)');
+    Params.ParamByName('rname').AsString:=Trim(AName);
+    Params.ParamByName('rtype').AsString:=Trim('webdav');
+    Params.ParamByName('ralias').AsString:='none';
+    Params.ParamByName('rparams').AsString:=BuildParams(AUrl,AUser,APwd);//组合成JSON字符串
+    Params.ParamByName('rletter').AsString:='';
+    Params.ParamByName('rcomment').AsString:=AComment;
+    ExecSQL;
+    //获取插入数据的ID生成ralias字符串
+    Close;
+    Sql.Clear;
+    Sql.Add('select max(id) as aa from remotes2');
+    Open;
+    First;
+    if not Eof then
+    begin
+      mID := FieldByName('aa').AsInteger;
+      mAlias := 'webdav_'+inttostr(mID);
+    end;
+    //更新回去
+    if Trim(mAlias)<>'' then
+    begin
+      Close;
+      Sql.Clear;
+      Sql.Add('update remotes2 set ralias=:ralias where id=:id');
+      Params.ParamByName('id').AsInteger:=mID;
+      Params.ParamByName('ralias').AsString:=mAlias;
+      ExecSQL;
+    end;
+  end;
+end;
+
+function TfrmEdit.BuildParams(AUrl, AUser, APwd: string): string;
+begin
+  Result := '{"url":"'+AUrl+'","user":"'+AUser+'","pwd":"'+APwd+'"}';
 end;
 
 procedure TfrmEdit.Button1Click(Sender: TObject);
@@ -107,6 +178,23 @@ begin
     Exit;
   end;
   //检查输入的标识名称是否存在
+  if RnameExists(EditName.Text)=True then
+  begin
+    MessageDlg('标识名称已存在，请修改。',mtWarning,[mbOK],0);
+    EditName.SetFocus;
+    Exit;
+  end;
+  if Self.ID=0 then
+  begin
+    //插入
+    DoInsert(Trim(EditName.Text),Trim(EditUrl.Text),Trim(EditUsername.Text),Trim(EditPwd.Text),Trim(EditComment.Text));
+    ModalResult:=mrOK;
+  end
+  else
+  begin
+    //更新
+
+  end;
 
 end;
 

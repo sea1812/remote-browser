@@ -17,7 +17,7 @@ type
     BCLabel1: TBCLabel;
     CyPanel1: TCyPanel;
     ImageList1: TImageList;
-    ListView1: TListView;
+    ListRemotes: TListView;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
@@ -73,6 +73,7 @@ type
     procedure InitPlugins;
     procedure InitPopAddRemote;
     procedure PopAddRemoteClick(Sender: TObject);
+    procedure ReloadListRemotes;
   end;
 
 var
@@ -88,9 +89,11 @@ uses
 
 procedure TfrmMain.RxSpeedButton1Click(Sender: TObject);
 begin
-  //Hide;
+  Hide;
+  Dm.Plugins.Clear;
+  //Dm.Plugins.Free;
   Close;
-  //Application.Terminate;
+//  Application.Terminate;
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
@@ -99,6 +102,7 @@ begin
   InitPlugins;
   InitPopAddRemote;
   RxSpeedButton2Click(nil);
+  ReloadListRemotes;
 end;
 
 procedure TfrmMain.RxSpeedButton2Click(Sender: TObject);
@@ -209,8 +213,36 @@ begin
   mResult:=dm.Plugins.Item(mIndex).Edit(Self.Handle,Dm.conn);
   if mResult='OK' then
   begin
-    //窗口返回mrOK
+    //窗口返回mrOK，刷新目录列表
+    ReloadListRemotes;
   end;
+end;
+
+procedure TfrmMain.ReloadListRemotes;
+begin
+  ListRemotes.Items.BeginUpdate;
+  ListRemotes.Items.Clear;
+  with dm.InnerQry do
+  begin
+    Close;
+    Sql.Clear;
+    Sql.Add('select * from remotes2 order by rname asc');
+    Open;
+    First;
+    while not Eof do
+    begin
+      with ListRemotes.Items.Add do
+      begin
+        Caption:=FieldByName('rtype').AsString;
+        SubItems.Add(FieldByName('rname').AsString);
+        SubItems.Add(FieldByName('rletter').AsString);
+        SubItems.Add(FieldByName('rcomment').AsString);
+        SubItems.Add(inttostr(FieldByName('id').AsInteger));
+      end;
+      Next;
+    end;
+  end;
+  listRemotes.Items.EndUpdate;
 end;
 
 end.

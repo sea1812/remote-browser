@@ -53,7 +53,7 @@ var
     else
       Result:=PChar('CANCEL');
     //mForm.Free;
-    //mForm:=nil;
+    mForm:=nil;
     EnableWindow(AParentWindow, True);
   end;
 

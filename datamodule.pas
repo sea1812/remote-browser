@@ -5,7 +5,7 @@ unit datamodule;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, ZConnection, gogopluginss;
+  Classes, SysUtils, FileUtil, ZConnection, ZDataset, gogopluginss;
 
 type
 
@@ -13,6 +13,7 @@ type
 
   Tdm = class(TDataModule)
     conn: TZConnection;
+    InnerQry: TZQuery;
   private
 
   public

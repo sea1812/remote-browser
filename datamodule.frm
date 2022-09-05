@@ -16,4 +16,10 @@ object dm: Tdm
     Left = 44
     Top = 79
   end
+  object InnerQry: TZQuery
+    Connection = conn
+    Params = <>
+    Left = 104
+    Top = 80
+  end
 end

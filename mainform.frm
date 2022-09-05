@@ -763,7 +763,7 @@ object frmMain: TfrmMain
     ClientHeight = 483
     ClientWidth = 437
     TabOrder = 3
-    object ListView1: TListView
+    object ListRemotes: TListView
       Left = 0
       Height = 455
       Top = 28
@@ -771,10 +771,11 @@ object frmMain: TfrmMain
       Align = alClient
       Columns = <      
         item
+          AutoSize = True
           Caption = '类型'
-          Width = 60
         end      
         item
+          AutoSize = True
           Caption = '标识名称'
           Width = 80
         end      
@@ -783,8 +784,8 @@ object frmMain: TfrmMain
           Width = 100
         end      
         item
+          AutoSize = True
           Caption = '备注'
-          Width = 150
         end>
       HideSelection = False
       ReadOnly = True

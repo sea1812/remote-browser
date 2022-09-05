@@ -1,11 +1,11 @@
 object frmEdit: TfrmEdit
   Left = 685
-  Height = 363
+  Height = 382
   Top = 227
   Width = 613
   BorderStyle = bsNone
   Caption = 'Form1'
-  ClientHeight = 363
+  ClientHeight = 382
   ClientWidth = 613
   DesignTimePPI = 120
   OnClose = FormClose
@@ -17,20 +17,20 @@ object frmEdit: TfrmEdit
   object Button1: TButton
     Left = 363
     Height = 31
-    Top = 288
+    Top = 311
     Width = 94
     Caption = '确定'
     OnClick = Button1Click
-    TabOrder = 0
+    TabOrder = 9
   end
   object StatusBar: TCyPanel
     Left = 0
     Height = 39
-    Top = 324
+    Top = 343
     Width = 613
     Align = alBottom
     DoubleBuffered = True
-    TabOrder = 1
+    TabOrder = 0
     Bevels = <>
     Degrade.Balance = 100
     Degrade.BalanceMode = bmMirror
@@ -50,7 +50,7 @@ object frmEdit: TfrmEdit
     ClientWidth = 613
     Color = clMoneyGreen
     ParentColor = False
-    TabOrder = 2
+    TabOrder = 1
     object BCLabel1: TBCLabel
       Left = 4
       Height = 34
@@ -554,7 +554,7 @@ object frmEdit: TfrmEdit
     Width = 613
     Align = alTop
     DoubleBuffered = True
-    TabOrder = 3
+    TabOrder = 2
     Bevels = <>
     Degrade.Balance = 100
     Degrade.BalanceMode = bmMirror
@@ -583,7 +583,7 @@ object frmEdit: TfrmEdit
     Height = 28
     Top = 65
     Width = 359
-    TabOrder = 4
+    TabOrder = 3
     TextHint = '仅用于标识，可用汉字、字母或数字'
   end
   object EditAlias: TEdit
@@ -592,7 +592,7 @@ object frmEdit: TfrmEdit
     Top = 104
     Width = 359
     Enabled = False
-    TabOrder = 5
+    TabOrder = 4
     Text = '自动生成'
     TextHint = '系统识别用，自动生成'
   end
@@ -609,7 +609,7 @@ object frmEdit: TfrmEdit
     Height = 28
     Top = 144
     Width = 359
-    TabOrder = 6
+    TabOrder = 5
     TextHint = '包括协议头和端口，如http://192.168.0.100:9192'
   end
   object Label4: TLabel
@@ -625,7 +625,7 @@ object frmEdit: TfrmEdit
     Height = 28
     Top = 184
     Width = 359
-    TabOrder = 7
+    TabOrder = 6
     TextHint = '登录账号'
   end
   object Label5: TLabel
@@ -641,31 +641,31 @@ object frmEdit: TfrmEdit
     Height = 28
     Top = 224
     Width = 359
-    TabOrder = 8
+    TabOrder = 7
     TextHint = '登录密码'
   end
   object Button2: TButton
     Left = 488
     Height = 31
-    Top = 288
+    Top = 311
     Width = 94
     Caption = '取消'
     ModalResult = 2
-    TabOrder = 9
+    TabOrder = 10
   end
   object Panel1: TPanel
     Left = 5
-    Height = 260
+    Height = 279
     Top = 64
     Width = 117
     Align = alLeft
     BorderSpacing.Left = 5
     BevelOuter = bvNone
-    ClientHeight = 260
+    ClientHeight = 279
     ClientWidth = 117
     Color = clWhite
     ParentColor = False
-    TabOrder = 10
+    TabOrder = 11
     object Image1: TImage
       Left = 2
       Height = 83
@@ -801,9 +801,25 @@ object frmEdit: TfrmEdit
       }
     end
   end
+  object Label6: TLabel
+    Left = 151
+    Height = 20
+    Top = 268
+    Width = 60
+    Caption = '备注信息'
+    ParentColor = False
+  end
+  object EditComment: TEdit
+    Left = 223
+    Height = 28
+    Top = 264
+    Width = 359
+    TabOrder = 8
+    TextHint = '备注信息，可留空'
+  end
   object Qry: TZQuery
     Params = <>
-    Left = 168
-    Top = 268
+    Left = 172
+    Top = 300
   end
 end
