@@ -9,15 +9,17 @@ object frmEdit: TfrmEdit
   ClientWidth = 613
   DesignTimePPI = 120
   OnClose = FormClose
+  OnDestroy = FormDestroy
   OnShow = FormShow
   Position = poScreenCenter
+  ShowInTaskBar = stNever
   LCLVersion = '6.3'
   object Button1: TButton
     Left = 188
     Height = 31
     Top = 288
     Width = 94
-    Caption = 'Button1'
+    Caption = 'Test DB'
     OnClick = Button1Click
     TabOrder = 0
   end
@@ -53,7 +55,7 @@ object frmEdit: TfrmEdit
       Left = 4
       Height = 34
       Top = 0
-      Width = 210
+      Width = 71
       Background.Color = clBlack
       Background.ColorOpacity = 255
       Background.Gradient1.StartColor = clWhite
@@ -89,7 +91,7 @@ object frmEdit: TfrmEdit
       Border.LightWidth = 0
       Border.Style = bboNone
       Border.Width = 1
-      Caption = 'GoDrive 4M 企业云盘控制台'
+      Caption = 'Caption'
       FontEx.Color = clBlack
       FontEx.EndEllipsis = False
       FontEx.FontQuality = fqSystemClearType
@@ -547,7 +549,7 @@ object frmEdit: TfrmEdit
   end
   object StatusBar1: TCyPanel
     Left = 0
-    Height = 39
+    Height = 30
     Top = 34
     Width = 613
     Align = alTop

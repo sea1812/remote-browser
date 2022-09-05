@@ -24,6 +24,7 @@ type
     StatusBar1: TCyPanel;
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure RxSpeedButton1Click(Sender: TObject);
   private
@@ -46,12 +47,18 @@ begin
   CloseAction:=caFree;
 end;
 
+procedure TfrmEdit.FormDestroy(Sender: TObject);
+begin
+  mForm := nil;
+end;
+
 procedure TfrmEdit.FormShow(Sender: TObject);
 begin
   if ID = 0 then
-    BCLabel1.Caption:='新增WebDav存储'
+    BCLabel1.Caption:='添加 WebDav 存储'
   else
-    BCLabel1.Caption:='编辑WebDav存储'
+    BCLabel1.Caption:='编辑 WebDav 存储';
+  Caption:=BCLabel1.Caption;
 end;
 
 procedure TfrmEdit.RxSpeedButton1Click(Sender: TObject);
@@ -78,5 +85,7 @@ begin
   end;
 end;
 
+begin
+   Application.Initialize;
 end.
 

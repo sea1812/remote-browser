@@ -5,7 +5,7 @@ unit datamodule;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, ZConnection;
+  Classes, SysUtils, FileUtil, ZConnection, gogopluginss;
 
 type
 
@@ -16,7 +16,7 @@ type
   private
 
   public
-
+    Plugins:TGoGoPlugins;
   end;
 
 var

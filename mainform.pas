@@ -5,10 +5,9 @@ unit mainform;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, cyPanel, cyNavPanel, Forms, Controls, Graphics,
-  Dialogs, ComCtrls, ExtCtrls, Menus, nkTitleBar, nkResizer, FZCommon, FZBase,
-  TplTabControlUnit, vte_treedata, VirtualTrees, rxctrls, BCLabel, gogopluginss,
-  Base64;
+  Classes, SysUtils, FileUtil, cyPanel, Forms, Controls, Graphics,
+  Dialogs, ComCtrls, ExtCtrls, Menus, nkTitleBar, nkResizer,
+  VirtualTrees, rxctrls, BCLabel, gogopluginss;
 
 type
 
@@ -71,6 +70,9 @@ type
 
   public
     procedure InitDB;
+    procedure InitPlugins;
+    procedure InitPopAddRemote;
+    procedure PopAddRemoteClick(Sender: TObject);
   end;
 
 var
@@ -94,6 +96,8 @@ end;
 procedure TfrmMain.FormShow(Sender: TObject);
 begin
   InitDB;
+  InitPlugins;
+  InitPopAddRemote;
 end;
 
 procedure TfrmMain.RxSpeedButton2Click(Sender: TObject);
@@ -131,15 +135,15 @@ var
   m:string;
 begin
   //测试plugin
-  mPlugin:=TGoGoPluginItem.Create(Self,ExtractFilepath(Application.ExeName)+'webdav.dll');
+  mPlugin:=TGoGoPluginItem.Create(Self,ExtractFilepath(Application.ExeName)+'\plugin\webdav.dll');
 // -----------------------------
 //  m:=mPlugin.PlugInfo();
-//  ShowMessage('Plugin.PlugInfo 说: '+#10#13+#10#13+AnsiToUTF8(DecodeStringBase64(m)));
+//  ShowMessage('Plugin.PlugInfo 说: '+#10#13+#10#13+m);
 //  mPlugin.Free;
 //  mPlugin:=nil;
 // -----------------------------
   m:=mPlugin.Edit(Self.Handle,Dm.conn);
-  showmessage(m);
+  //showmessage(m);
   //窗口自释放，无需mPlugin.Free;
   // -----------------------------
 
@@ -147,9 +151,65 @@ end;
 
 procedure TfrmMain.InitDB;
 begin
-  dm.conn.LibraryLocation:=ExtractFilepath(Application.ExeName)+'sqlite3.dll';
-  dm.conn.Database:=ExtractFilepath(Application.ExeName)+'config.db';
+  dm.conn.LibraryLocation:=ExtractFilepath(Application.ExeName)+'\data\sqlite3.dll';
+  dm.conn.Database:=ExtractFilepath(Application.ExeName)+'\data\config.db';
   dm.conn.Connect;
+end;
+
+procedure TfrmMain.InitPlugins;
+var
+  mFiles:TStrings;
+  i:integer;
+  mItem:TGoGoPluginItem;
+  mInfo:string;
+  m:string;
+begin
+  dm.Plugins:=TGoGoPlugins.Create(Self);
+  //查找plugin目录下的插件Dll
+  mFiles := FindAllFiles(ExtractFilepath(Application.ExeName)+'plugin', '*.dll', False);
+  for i:=0 to mFiles.Count-1 do
+  begin
+    mItem:=TGoGoPluginItem.Create(Self,Trim(mFiles.Strings[i]));
+    m:=mItem.PlugType();
+    mInfo := m;
+    mItem.LibType:=mInfo;
+    Dm.Plugins.Add(mItem);
+  end;
+  mFiles.Free;
+  //测试
+  //if Dm.Plugins.Count>0 then
+  //begin
+  //  ShowMessage(Dm.Plugins.Item(0).LibType);
+  //end;
+end;
+
+procedure TfrmMain.InitPopAddRemote;
+var
+  i:integer;
+  mItem:TMenuItem;
+begin
+  PopAddRemote.Items.Clear;
+  for i:=0 to Dm.Plugins.Count-1 do
+  begin
+    mItem:=TMenuItem.Create(PopAddRemote);
+    mItem.Caption:='添加 '+UpperCase(Dm.Plugins.Item(i).LibType)+' 存储';
+    mItem.Tag:=i;
+    mItem.OnClick:=@PopAddRemoteClick;
+    PopAddRemote.Items.Add(mItem);
+  end;
+end;
+
+procedure TfrmMain.PopAddRemoteClick(Sender: TObject);
+var
+  mIndex:integer;
+  mResult:string;
+begin
+  mIndex:=(Sender as TMenuItem).Tag;
+  mResult:=dm.Plugins.Item(mIndex).Edit(Self.Handle,Dm.conn);
+  if mResult='OK' then
+  begin
+    //窗口返回mrOK
+  end;
 end;
 
 end.

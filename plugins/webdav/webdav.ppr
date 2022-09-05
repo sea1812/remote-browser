@@ -8,31 +8,43 @@ uses
   { you can add units after this };
 
 var
-  PLUG_NAME :string = 'webdav';
+  PLUG_TYPE :string = 'webdav';
+  PLUG_NAME :string = 'webdav plugin';
   PLUG_VERSION :string = '1.0';
   PLUG_AUTHOR :string = 'ggyun.top中文';
+
+  //返回插件Type
+  function PlugType():PChar; stdcall;
+  begin
+    Result:=PChar(PLUG_TYPE);
+  end;
 
   //返回插件信息JSON
   function PlugInfo(): PChar; stdcall;
   var
-    mJson:TJsonObject;
-    mStream:TStringStream;
+ //   mJson:TJsonObject;
+ //   mStream:TStringStream;
+    m:string;
   begin
-    mJson:=TJsonObject.Create;
-    mJson.Add('name',PLUG_NAME);
-    mJson.Add('ver',PLUG_VERSION);
-    mJson.Add('author',PLUG_AUTHOR);
-    mStream:=TStringStream.Create('',TEncoding.UTF8);
-    mJson.DumpJSON(mStream);
-    Result := PChar(EncodeStringBase64(mStream.DataString));
-    mStream.Free;
-    mJson.Free;
+    m:='{"name":'+'"'+PLUG_NAME+'",'
+      +'"ver":"'+'"'+PLUG_VERSION+'",'
+      +'"author":"'+'"'+PLUG_AUTHOR+'"}';
+//    mJson:=TJsonObject.Create;
+//    mJson.Add('name',PLUG_NAME);
+//    mJson.Add('ver',PLUG_VERSION);
+//    mJson.Add('author',PLUG_AUTHOR);
+//    mStream:=TStringStream.Create('',TEncoding.UTF8);
+//    mJson.DumpJSON(mStream);
+//      Result := PChar(EncodeStringBase64(UTF8ToAnsi(mStream.DataString)));
+    Result := PChar(m);
+//    mStream.Free;
+//    mJson.Free;
   end;
 
   //显示窗体
-  function Edit(AParentWindow: HWND;AConn:TZConnection):PChar;stdcall;
+  function Edit(APP:TApplication;AParentWindow: HWND;AConn:TZConnection):PChar;stdcall;
   begin
-    Application.Initialize;
+    Application:=APP;
     EnableWindow(AParentWindow, False);
     mForm := TfrmEdit.Create(nil);
     mForm.Qry.Connection:=AConn;
@@ -40,13 +52,13 @@ var
       Result:=PChar('OK')
     else
       Result:=PChar('CANCEL');
-    mForm.Free;
-    mForm:=nil;
+    //mForm.Free;
+    //mForm:=nil;
     EnableWindow(AParentWindow, True);
   end;
 
 exports
-  PlugInfo, Edit;
+  PlugType, PlugInfo, Edit;
 
 end.
 
