@@ -7,17 +7,17 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, mainform
-  { you can add units after this };
+  Forms, mainform, gogopluginss, datamodule;
 
 {$R *.res}
 
 begin
-  Application.Title:='Rclone Desktop';
+  Application.Title:='Remote Browser';
   Application.Scaled:=True;
   RequireDerivedFormResource:=True;
   Application.Initialize;
   Application.CreateForm(TfrmMain, frmMain);
+  Application.CreateForm(Tdm, dm);
   Application.Run;
 end.
 

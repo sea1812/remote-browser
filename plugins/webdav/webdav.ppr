@@ -1,0 +1,52 @@
+library webdav;
+
+{$mode objfpc}{$H+}
+
+uses
+  Interfaces , Classes, windows, forms, fpjson, Base64, SysUtils, editform,
+  ZConnection, Controls
+  { you can add units after this };
+
+var
+  PLUG_NAME :string = 'webdav';
+  PLUG_VERSION :string = '1.0';
+  PLUG_AUTHOR :string = 'ggyun.top中文';
+
+  //返回插件信息JSON
+  function PlugInfo(): PChar; stdcall;
+  var
+    mJson:TJsonObject;
+    mStream:TStringStream;
+  begin
+    mJson:=TJsonObject.Create;
+    mJson.Add('name',PLUG_NAME);
+    mJson.Add('ver',PLUG_VERSION);
+    mJson.Add('author',PLUG_AUTHOR);
+    mStream:=TStringStream.Create('',TEncoding.UTF8);
+    mJson.DumpJSON(mStream);
+    Result := PChar(EncodeStringBase64(mStream.DataString));
+    mStream.Free;
+    mJson.Free;
+  end;
+
+  //显示窗体
+  function Edit(AParentWindow: HWND;AConn:TZConnection):PChar;stdcall;
+  begin
+    Application.Initialize;
+    EnableWindow(AParentWindow, False);
+    mForm := TfrmEdit.Create(nil);
+    mForm.Qry.Connection:=AConn;
+    if mForm.ShowModal=mrOK then
+      Result:=PChar('OK')
+    else
+      Result:=PChar('CANCEL');
+    mForm.Free;
+    mForm:=nil;
+    EnableWindow(AParentWindow, True);
+  end;
+
+exports
+  PlugInfo, Edit;
+
+end.
+

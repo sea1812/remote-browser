@@ -8,6 +8,7 @@ object frmMain: TfrmMain
   ClientHeight = 604
   ClientWidth = 906
   DesignTimePPI = 120
+  OnShow = FormShow
   LCLVersion = '6.3'
   object CyPanel1: TCyPanel
     Left = 0
@@ -25,11 +26,13 @@ object frmMain: TfrmMain
     Degrade.SpeedPercent = 1
     Degrade.ToColor = clBtnFace
     object ToolBar1: TToolBar
-      Left = 0
+      Left = 5
       Height = 48
       Top = 0
-      Width = 906
+      Width = 896
       AutoSize = True
+      BorderSpacing.Left = 5
+      BorderSpacing.Right = 5
       ButtonHeight = 48
       ButtonWidth = 48
       Caption = 'ToolBar1'
@@ -42,8 +45,9 @@ object frmMain: TfrmMain
       Transparent = True
       object ToolAddNode: TToolButton
         Left = 1
-        Hint = '增加节点'
+        Hint = '添加Remote'
         Top = 0
+        DropdownMenu = PopAddRemote
         ImageIndex = 0
       end
       object ToolEditNode: TToolButton
@@ -204,6 +208,7 @@ object frmMain: TfrmMain
         Hint = '关于……'
         Top = 0
         ImageIndex = 14
+        OnClick = ToolHelpClick
       end
       object ToolButton6: TToolButton
         Left = 799
@@ -775,11 +780,11 @@ object frmMain: TfrmMain
         end      
         item
           Caption = '本地盘符'
-          Width = 80
+          Width = 100
         end      
         item
           Caption = '备注'
-          Width = 180
+          Width = 150
         end>
       HideSelection = False
       ReadOnly = True
@@ -2881,5 +2886,24 @@ object frmMain: TfrmMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000
     }
+  end
+  object PopAddRemote: TPopupMenu
+    Left = 252
+    Top = 183
+    object MenuItem1: TMenuItem
+      Caption = '添加 WebDav 网盘'
+    end
+    object MenuItem2: TMenuItem
+      Caption = '添加 S3 网盘'
+    end
+    object MenuItem3: TMenuItem
+      Caption = '添加 OneDrive 网盘'
+    end
+    object MenuItem4: TMenuItem
+      Caption = '添加 FTP 网盘'
+    end
+    object MenuItem5: TMenuItem
+      Caption = '添加 SSH 网盘'
+    end
   end
 end
