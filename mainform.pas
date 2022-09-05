@@ -17,6 +17,7 @@ type
     BCLabel1: TBCLabel;
     CyPanel1: TCyPanel;
     ImageList1: TImageList;
+    ImageList2: TImageList;
     ListRemotes: TListView;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
@@ -233,11 +234,15 @@ begin
     begin
       with ListRemotes.Items.Add do
       begin
-        Caption:=FieldByName('rtype').AsString;
+        Caption:='';//FieldByName('rtype').AsString;
         SubItems.Add(FieldByName('rname').AsString);
-        SubItems.Add(FieldByName('rletter').AsString);
+        if Trim(FieldByName('rletter').AsString)='' then
+          SubItems.Add('-')
+        else
+          SubItems.Add(FieldByName('rletter').AsString);
         SubItems.Add(FieldByName('rcomment').AsString);
         SubItems.Add(inttostr(FieldByName('id').AsInteger));
+        ImageIndex:=0;
       end;
       Next;
     end;
