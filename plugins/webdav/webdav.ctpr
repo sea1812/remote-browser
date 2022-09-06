@@ -46,7 +46,7 @@
         <PackageName Value="adLCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="2">
+    <Units Count="3">
       <Unit0>
         <Filename Value="webdav.ppr"/>
         <IsPartOfProject Value="True"/>
@@ -58,6 +58,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="rccmd.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit2>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

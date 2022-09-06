@@ -4,7 +4,7 @@ library webdav;
 
 uses
   Interfaces , Classes, windows, forms, fpjson, Base64, SysUtils, editform,
-  ZConnection, Controls
+  ZConnection, Controls, rccmd
   { you can add units after this };
 
 var
@@ -22,23 +22,12 @@ var
   //返回插件信息JSON
   function PlugInfo(): PChar; stdcall;
   var
- //   mJson:TJsonObject;
- //   mStream:TStringStream;
     m:string;
   begin
     m:='{"name":'+'"'+PLUG_NAME+'",'
       +'"ver":"'+'"'+PLUG_VERSION+'",'
       +'"author":"'+'"'+PLUG_AUTHOR+'"}';
-//    mJson:=TJsonObject.Create;
-//    mJson.Add('name',PLUG_NAME);
-//    mJson.Add('ver',PLUG_VERSION);
-//    mJson.Add('author',PLUG_AUTHOR);
-//    mStream:=TStringStream.Create('',TEncoding.UTF8);
-//    mJson.DumpJSON(mStream);
-//      Result := PChar(EncodeStringBase64(UTF8ToAnsi(mStream.DataString)));
     Result := PChar(m);
-//    mStream.Free;
-//    mJson.Free;
   end;
 
   //显示窗体
