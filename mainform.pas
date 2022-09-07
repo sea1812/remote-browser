@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, cyPanel, Forms, Controls, Graphics,
   Dialogs, ComCtrls, ExtCtrls, Menus, nkTitleBar, nkResizer,
-  VirtualTrees, rxctrls, BCLabel, gogopluginss;
+  VirtualTrees, rxctrls, BCLabel, gogopluginss, rccmd, filesform;
 
 type
 
@@ -26,7 +26,7 @@ type
     MenuItem5: TMenuItem;
     nkResizer2: TnkResizer;
     nkTitleBar2: TnkTitleBar;
-    PageControl1: TPageControl;
+    Tabs: TPageControl;
     Panel1: TPanel;
     PopAddRemote: TPopupMenu;
     RxSpeedButton1: TRxSpeedButton;
@@ -64,6 +64,7 @@ type
     procedure RxSpeedButton1Click(Sender: TObject);
     procedure RxSpeedButton2Click(Sender: TObject);
     procedure RxSpeedButton3Click(Sender: TObject);
+    procedure ToolButton6Click(Sender: TObject);
     procedure ToolHelpClick(Sender: TObject);
   private
     WinMax : boolean;
@@ -75,6 +76,8 @@ type
     procedure InitPopAddRemote;
     procedure PopAddRemoteClick(Sender: TObject);
     procedure ReloadListRemotes;
+    procedure ClearTab;
+    procedure AddFilesTab(AAlias:string; ACaption:string);
   end;
 
 var
@@ -87,6 +90,29 @@ uses
 {$R *.frm}
 
 { TfrmMain }
+
+procedure TfrmMain.ClearTab;
+begin
+  if Assigned(Tabs.ActivePage) then
+  begin
+    Tabs.ActivePage.Free;
+  end;
+end;
+
+procedure TfrmMain.AddFilesTab(AAlias: string; ACaption:string);
+Var
+  TabSheet: TFilesPanel;
+begin
+  //ClearTab; TODO:改成查询是否存在相同Alias
+  TabSheet := TFilesPanel.Create(Tabs);
+  TabSheet.Parent := Tabs;
+  TabSheet.RAlias:='webdav_1';
+  TabSheet.RootPath:='';
+  TabSheet.Caption:=ACaption;
+  Tabsheet.ShowForm;
+  Tabs.ActivePageIndex := TabSheet.PageIndex;
+
+end;
 
 procedure TfrmMain.RxSpeedButton1Click(Sender: TObject);
 begin
@@ -135,6 +161,11 @@ begin
   Application.Minimize;
 end;
 
+procedure TfrmMain.ToolButton6Click(Sender: TObject);
+begin
+  Self.AddFilesTab('webdav_1','2222');
+end;
+
 procedure TfrmMain.ToolHelpClick(Sender: TObject);
 var
   mPlugin:TGoGoPluginItem;
@@ -148,10 +179,12 @@ begin
 //  mPlugin.Free;
 //  mPlugin:=nil;
 // -----------------------------
-  m:=mPlugin.Edit(Self.Handle,Dm.conn);
+//  m:=mPlugin.Edit(Self.Handle,Dm.conn);
   //showmessage(m);
   //窗口自释放，无需mPlugin.Free;
   // -----------------------------
+  m:=mPlugIn.CreateRemote(1,Dm.conn);
+  ShowMessage(m);
 
 end;
 

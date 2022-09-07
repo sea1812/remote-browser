@@ -20,11 +20,13 @@ type
     destructor  Destroy;override;
     function PlugInfo():PChar;
     function PlugType():PChar;
-    function Edit(Handle:HWND;ADBConn:TZConnection):PChar;
+    function Edit(Handle:HWND;ADBConn:TZConnection;AID:integer=0):PChar;
+    function CreateRemote(AID:integer;AConn:TZConnection):PChar;
   end;
 
   TPlugInfo  = function (): PChar; stdcall;
-  TPlugEdit  = function (APP:TApplication;Handle:HWND;ADBConn:TZConnection):Pchar; stdcall;
+  TPlugEdit  = function (APP:TApplication;Handle:HWND;ADBConn:TZConnection;AID:integer):Pchar; stdcall;
+  TPlugCreateRemote = function (AID:integer;AConn:TZConnection):PChar;stdcall;
 
   { TGoGoPlugins }
 
@@ -164,7 +166,7 @@ begin
   end;
 end;
 
-function TGoGoPluginItem.Edit(Handle:HWND;ADBConn:TZConnection): PChar;
+function TGoGoPluginItem.Edit(Handle:HWND;ADBConn:TZConnection;AID:integer=0): PChar;
 var
   mFunc:TPlugEdit;
 begin
@@ -174,7 +176,22 @@ begin
     mFunc := TPlugEdit(GetProcedureAddress(LibHandle,'Edit'));
     if Assigned(mFunc) then
     begin
-      Result:=mFunc(Application,Handle,ADBConn);
+      Result:=mFunc(Application,Handle,ADBConn,AID);
+    end;
+  end;
+end;
+
+function TGoGoPluginItem.CreateRemote(AID: integer; AConn: TZConnection): PChar;
+var
+  mFunc:TPlugCreateRemote;
+begin
+  Result:='';
+  if LibHandle<>0 then
+  begin
+    mFunc := TPlugCreateRemote(GetProcedureAddress(LibHandle,'CreateRemote'));
+    if Assigned(mFunc) then
+    begin
+      Result:=mFunc(AID,AConn);
     end;
   end;
 end;

@@ -17,8 +17,94 @@ procedure DoConfigUpdate(ARemote, AKey, AValue: string);
 procedure DoConfigPassword(ARemote, APassword: string);
 procedure DoConfigDeleteRemote(ARemote: string);
 function  DoMount(ARemote, ADriveLetter, AVolumeLabel,ACacheDir: string):integer;
+function  DoListRemotes: string;
+procedure ParseRemoteNames(AIn: string; AOut: TStrings);
+function  RemoteExists(ARemote:string):boolean;
+function  ParamsToJson(AParams:string):TJSONData;
 
 implementation
+
+function  ParamsToJson(AParams:string):TJSONData;
+var
+  mTmp:TStrings;
+  mStream:TMemoryStream;
+begin
+  mTmp:=TStringList.Create;
+  mTmp.Text:=AParams;
+  mStream:=TMemoryStream.Create;
+  mTmp.SaveToStream(mStream);
+  mStream.Seek(0,soBeginning);
+  try
+    Result := GetJSon(mStream);
+  Except
+    Result := nil;
+  end;
+  mStream.Free;
+  mTmp.Free;
+end;
+
+function RemoteExists(ARemote: string): boolean;
+var
+  m:string;
+  mTmp:TStrings;
+begin
+  Result:=False;
+  m := DoListRemotes;
+  mTmp:=TStringList.Create;
+  ParseRemoteNames(m,mTmp);
+  if mTmp.IndexOf(Trim(ARemote))>=0 then
+     Result := True;
+  mTmp.Free;
+end;
+
+procedure ParseRemoteNames(AIn: string; AOut: TStrings);
+var
+  mTmp:TStrings;
+  mLine:string;
+  i:integer;
+begin
+  if Pos('notice:',LowerCase(AIn))<=0 then
+  begin
+    AOut.Clear;
+    mTmp := TStringList.Create;
+    mTmp.Text:=AIn;
+    //循环去除冒号
+    for i:=0 to mTmp.Count-1 do
+    begin
+      mLine:=Trim(mTmp.Strings[i]);
+      if Trim(mLine)<>'' then
+      begin
+        //去除冒号
+        if Pos(':',mLine)>0 then
+        begin
+          mLine:=StringReplace(mLine,':','',[rfReplaceAll]);
+          AOut.Add(mLine);
+        end;
+      end;
+    end;
+    mTmp.Free;
+  end
+  else
+  begin
+    AOut.Text:='';
+  end;
+end;
+
+function DoListRemotes: string;
+var
+  mParams,mOutput:TStrings;
+begin
+  //执行rc listremotes
+  mOutput:=TStringList.Create;
+  mParams:=TStringList.Create;
+  mParams.Add('/c');
+  mParams.Add('.\rc listremotes');
+
+  ExecuteCommand('c:\windows\system32\cmd.exe',mParams,mOutput,False);
+  Result := Trim(mOutput.Text);
+  mParams.Free;
+  mOutput.Free;
+end;
 
 function DoMount(ARemote, ADriveLetter, AVolumeLabel,
   ACacheDir: string):integer;

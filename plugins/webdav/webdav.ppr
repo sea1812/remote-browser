@@ -4,7 +4,7 @@ library webdav;
 
 uses
   Interfaces , Classes, windows, forms, fpjson, Base64, SysUtils, editform,
-  ZConnection, Controls, rccmd
+  ZConnection, Controls, ZDataset, jsonparser,rccmd
   { you can add units after this };
 
 var
@@ -30,24 +30,83 @@ var
     Result := PChar(m);
   end;
 
-  //显示窗体
-  function Edit(APP:TApplication;AParentWindow: HWND;AConn:TZConnection):PChar;stdcall;
+  //显示编辑窗体
+  function Edit(APP:TApplication;AParentWindow: HWND;AConn:TZConnection;AID:integer):PChar;stdcall;
   begin
     Application:=APP;
     EnableWindow(AParentWindow, False);
     mForm := TfrmEdit.Create(nil);
     mForm.Qry.Connection:=AConn;
+    mForm.ID:=AID;
     if mForm.ShowModal=mrOK then
       Result:=PChar('OK')
     else
       Result:=PChar('CANCEL');
-    //mForm.Free;
     mForm:=nil;
     EnableWindow(AParentWindow, True);
   end;
 
+  //创建Remote
+  function CreateRemote(AID:integer;AConn:TZConnection):PChar;stdcall;
+  var
+    mQry:TZQuery;
+    mAlias,mType,mParams,mUrl,mUser,mPwd:string;
+    mJson:TJSONData;
+    mR:string;
+  begin
+    Result := PChar('CANCEL');
+    //先查询指定ID的信息
+    mQry := TZQuery.Create(nil);
+    mQry.Connection:=AConn;
+    with mQry do
+    begin
+      Close;
+      Sql.Clear;
+      Sql.Add('select * from remotes2 where id=:id');
+      Params.ParamByName('id').AsInteger:=AID;
+      Open;
+      First;
+      if not Eof then
+      begin
+        //找到，取值
+        mAlias := Trim(FieldByName('ralias').AsString);
+        mType  := Trim(FieldByName('rtype').AsString);
+        mParams := Trim(FieldByName('rparams').AsString);
+        //检查alias是否已经存在
+        if RemoteExists(mAlias)=False then
+        begin
+          //执行Create
+          DoConfigCreateRemote(mAlias,mType);//本DLL中mType必须应该webdav
+          mR := '已创建;';
+        end
+        else
+          mR := '已存在;';
+        //参数转换成JSON
+        mJson:=ParamsToJson(mParams);
+        if mJson <> nil  then
+        begin
+          //更新参数
+          mUrl := mJson.FindPath('url').AsString;
+          mUser := mJson.FindPath('user').AsString;
+          mPwd := mJson.FindPath('pwd').AsString;
+          DoConfigUpdate(mAlias,'url',mUrl);
+          DoConfigUpdate(mAlias,'user',mUser);
+          DoConfigPassword(mAlias,mPwd);
+          mR := mR + '已更新;';
+        end;
+        Result:=PChar(mR);
+      end
+      else
+      begin
+        //未找到
+        Result := PChar('未找到设置。');
+      end;
+    end;
+    mQry.Free;
+  end;
+
 exports
-  PlugType, PlugInfo, Edit;
+  PlugType, PlugInfo, Edit, CreateRemote;
 
 end.
 

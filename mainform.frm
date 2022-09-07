@@ -215,6 +215,7 @@ object frmMain: TfrmMain
         Top = 0
         Caption = 'ToolButton6'
         ImageIndex = 15
+        OnClick = ToolButton6Click
       end
     end
   end
@@ -818,7 +819,7 @@ object frmMain: TfrmMain
     Top = 82
     Width = 6
   end
-  object PageControl1: TPageControl
+  object Tabs: TPageControl
     Left = 448
     Height = 483
     Top = 82

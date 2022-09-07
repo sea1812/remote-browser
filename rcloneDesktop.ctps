@@ -4,13 +4,13 @@
     <PathDelim Value="\"/>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="10">
+    <Units Count="16">
       <Unit0>
         <Filename Value="rcloneDesktop.ppr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <CursorPos Y="22"/>
-        <UsageCount Value="38"/>
+        <CursorPos X="45" Y="17"/>
+        <UsageCount Value="76"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainform.pas"/>
@@ -18,20 +18,20 @@
         <ComponentName Value="frmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="222"/>
-        <CursorPos X="14" Y="242"/>
-        <UsageCount Value="38"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="88"/>
+        <CursorPos X="19" Y="96"/>
+        <UsageCount Value="76"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="gogopluginss.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="118"/>
-        <CursorPos X="19" Y="134"/>
-        <UsageCount Value="36"/>
+        <TopLine Value="17"/>
+        <CursorPos X="54" Y="26"/>
+        <UsageCount Value="74"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -43,176 +43,126 @@
         <EditorIndex Value="1"/>
         <TopLine Value="3"/>
         <CursorPos X="35" Y="17"/>
-        <UsageCount Value="36"/>
+        <UsageCount Value="74"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
       <Unit4>
+        <Filename Value="rccmd.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="filesform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="formpanel.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit6>
+      <Unit7>
         <Filename Value="C:\codetyphon\fpcsrc\rtl\win\sysdlh.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="17"/>
-        <UsageCount Value="9"/>
-      </Unit4>
-      <Unit5>
+        <UsageCount Value="6"/>
+      </Unit7>
+      <Unit8>
         <Filename Value="C:\codetyphon\fpcsrc\rtl\objpas\classes\classesh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1878"/>
         <CursorPos X="38" Y="1889"/>
-        <UsageCount Value="9"/>
-      </Unit5>
-      <Unit6>
+        <UsageCount Value="6"/>
+      </Unit8>
+      <Unit9>
         <Filename Value="C:\codetyphon\fpcsrc\packages\fcl-base\src\base64.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="410"/>
         <CursorPos X="42" Y="423"/>
-        <UsageCount Value="9"/>
-      </Unit6>
-      <Unit7>
+        <UsageCount Value="6"/>
+      </Unit9>
+      <Unit10>
         <Filename Value="C:\codetyphon\typhon\lcl\dialogs.pp"/>
         <UnitName Value="Dialogs"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="685"/>
         <CursorPos X="38" Y="702"/>
-        <UsageCount Value="9"/>
-      </Unit7>
-      <Unit8>
+        <UsageCount Value="6"/>
+      </Unit10>
+      <Unit11>
         <Filename Value="plugins\webdav\datamodule.pas"/>
         <ComponentName Value="Dm"/>
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="4" Y="12"/>
-        <UsageCount Value="19"/>
-      </Unit8>
-      <Unit9>
+        <UsageCount Value="16"/>
+      </Unit11>
+      <Unit12>
         <Filename Value="C:\codetyphon\typhon\lcl\forms.pp"/>
         <UnitName Value="Forms"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1812"/>
         <CursorPos X="3" Y="1826"/>
-        <UsageCount Value="9"/>
-      </Unit9>
+        <UsageCount Value="6"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="plugins\webdav\rccmd.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="23"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="plugins\webdav\filesform.pas"/>
+        <ComponentName Value="frmFiles"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="34"/>
+        <CursorPos X="37" Y="56"/>
+        <UsageCount Value="23"/>
+        <LoadedDesigner Value="True"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="plugins\webdav\formpanel.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="16"/>
+        <CursorPos X="42" Y="36"/>
+        <UsageCount Value="23"/>
+      </Unit15>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="5" HistoryIndex="4">
       <Position1>
-        <Filename Value="gogopluginss.pas"/>
-        <Caret Line="65" Column="33" TopLine="52"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="109" Column="33" TopLine="96"/>
       </Position1>
       <Position2>
-        <Filename Value="gogopluginss.pas"/>
-        <Caret Line="70" Column="27" TopLine="10"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="166" Column="39" TopLine="150"/>
       </Position2>
       <Position3>
         <Filename Value="mainform.pas"/>
-        <Caret Line="91" Column="3" TopLine="76"/>
+        <Caret Line="80" Column="15" TopLine="67"/>
       </Position3>
       <Position4>
         <Filename Value="mainform.pas"/>
-        <Caret Line="11" Column="9"/>
+        <Caret Line="80" Column="57" TopLine="72"/>
       </Position4>
       <Position5>
-        <Filename Value="gogopluginss.pas"/>
-        <Caret Line="34" Column="54" TopLine="21"/>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="175" Column="36" TopLine="150"/>
       </Position5>
-      <Position6>
-        <Filename Value="gogopluginss.pas"/>
-        <Caret Line="40" Column="42" TopLine="21"/>
-      </Position6>
-      <Position7>
-        <Filename Value="gogopluginss.pas"/>
-        <Caret Line="49" Column="22" TopLine="47"/>
-      </Position7>
-      <Position8>
-        <Filename Value="gogopluginss.pas"/>
-        <Caret Line="57" Column="47" TopLine="43"/>
-      </Position8>
-      <Position9>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="74" Column="27" TopLine="58"/>
-      </Position9>
-      <Position10>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="98" Column="15" TopLine="83"/>
-      </Position10>
-      <Position11>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="165" Column="34" TopLine="63"/>
-      </Position11>
-      <Position12>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="141" Column="36" TopLine="130"/>
-      </Position12>
-      <Position13>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="139" Column="54" TopLine="128"/>
-      </Position13>
-      <Position14>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="75" Column="18" TopLine="59"/>
-      </Position14>
-      <Position15>
-        <Filename Value="gogopluginss.pas"/>
-        <Caret Line="22" Column="31" TopLine="14"/>
-      </Position15>
-      <Position16>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="180" Column="18" TopLine="179"/>
-      </Position16>
-      <Position17>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="76" Column="27" TopLine="56"/>
-      </Position17>
-      <Position18>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="205" Column="26" TopLine="167"/>
-      </Position18>
-      <Position19>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="199" Column="40" TopLine="185"/>
-      </Position19>
-      <Position20>
-        <Filename Value="gogopluginss.pas"/>
-        <Caret Line="23" Column="14" TopLine="9"/>
-      </Position20>
-      <Position21>
-        <Filename Value="gogopluginss.pas"/>
-        <Caret Line="27" Column="43" TopLine="18"/>
-      </Position21>
-      <Position22>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="205" Column="18" TopLine="116"/>
-      </Position22>
-      <Position23>
-        <Filename Value="gogopluginss.pas"/>
-        <Caret Line="8" Column="36"/>
-      </Position23>
-      <Position24>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="212" Column="23" TopLine="186"/>
-      </Position24>
-      <Position25>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="10" Column="47"/>
-      </Position25>
-      <Position26>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="76" Column="33" TopLine="59"/>
-      </Position26>
-      <Position27>
-        <Filename Value="datamodule.pas"/>
-        <Caret Line="16" Column="35" TopLine="3"/>
-      </Position27>
-      <Position28>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="104" Column="20" TopLine="101"/>
-      </Position28>
-      <Position29>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="237" Column="40" TopLine="221"/>
-      </Position29>
-      <Position30>
-        <Filename Value="gogopluginss.pas"/>
-        <Caret Line="168" Column="27" TopLine="45"/>
-      </Position30>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

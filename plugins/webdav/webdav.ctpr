@@ -59,7 +59,7 @@
         <ResourceBaseClass Value="Form"/>
       </Unit1>
       <Unit2>
-        <Filename Value="rccmd.pas"/>
+        <Filename Value="..\..\rccmd.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit2>
     </Units>
@@ -72,6 +72,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="..\.."/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
