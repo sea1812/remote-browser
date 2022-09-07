@@ -78,6 +78,7 @@ type
     procedure ReloadListRemotes;
     procedure ClearTab;
     procedure AddFilesTab(AAlias:string; ACaption:string);
+    function  IndexOfFilesTab(AAlias:string):integer;
   end;
 
 var
@@ -102,16 +103,43 @@ end;
 procedure TfrmMain.AddFilesTab(AAlias: string; ACaption:string);
 Var
   TabSheet: TFilesPanel;
+  mIndex:integer;
 begin
-  //ClearTab; TODO:改成查询是否存在相同Alias
-  TabSheet := TFilesPanel.Create(Tabs);
-  TabSheet.Parent := Tabs;
-  TabSheet.RAlias:='webdav_1';
-  TabSheet.RootPath:='';
-  TabSheet.Caption:=ACaption;
-  Tabsheet.ShowForm;
-  Tabs.ActivePageIndex := TabSheet.PageIndex;
+  mIndex:=IndexOfFilesTab(AAlias);
+  if  mIndex = -1 then
+  begin
+    //ClearTab; TODO:改成查询是否存在相同Alias
+    TabSheet := TFilesPanel.Create(Tabs);
+    TabSheet.Parent := Tabs;
+    TabSheet.RAlias:='webdav_1';
+    TabSheet.RootPath:='';
+    TabSheet.Caption:=ACaption;
+    Tabsheet.ShowForm;
+    Tabs.ActivePageIndex := TabSheet.PageIndex;
+  end
+  else
+  begin
+    Tabs.ActivePageIndex:=mIndex;
+  end;
 
+end;
+
+function TfrmMain.IndexOfFilesTab(AAlias: string): integer;
+var
+  i:integer;
+begin
+  Result:=-1;
+  for i:=0 to Tabs.PageCount-1 do
+  begin
+    if Tabs.Pages[i] is TFilesPanel then
+    begin
+      if Trim((Tabs.Pages[i] as TFilesPanel).RAlias)=Trim(AAlias) then
+      begin
+        Result:=i;
+        Break;
+      end;
+    end;
+  end;
 end;
 
 procedure TfrmMain.RxSpeedButton1Click(Sender: TObject);

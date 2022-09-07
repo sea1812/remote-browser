@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="45" Y="17"/>
-        <UsageCount Value="76"/>
+        <UsageCount Value="78"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainform.pas"/>
@@ -18,20 +18,19 @@
         <ComponentName Value="frmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="88"/>
-        <CursorPos X="19" Y="96"/>
-        <UsageCount Value="76"/>
+        <TopLine Value="197"/>
+        <CursorPos X="19" Y="205"/>
+        <UsageCount Value="78"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="gogopluginss.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="17"/>
         <CursorPos X="54" Y="26"/>
-        <UsageCount Value="74"/>
+        <UsageCount Value="76"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -40,40 +39,43 @@
         <ComponentName Value="dm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="3"/>
         <CursorPos X="35" Y="17"/>
-        <UsageCount Value="74"/>
+        <UsageCount Value="76"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="rccmd.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="-1"/>
-        <TopLine Value="-1"/>
-        <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="20"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="31" Y="10"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="filesform.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmFiles"/>
         <HasResources Value="True"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="-1"/>
-        <TopLine Value="-1"/>
-        <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="20"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="86"/>
+        <CursorPos X="39" Y="97"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="formpanel.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="-1"/>
-        <TopLine Value="-1"/>
-        <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="20"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="7"/>
+        <CursorPos X="13" Y="13"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="C:\codetyphon\fpcsrc\rtl\win\sysdlh.inc"/>
@@ -142,7 +144,7 @@
         <UsageCount Value="23"/>
       </Unit15>
     </Units>
-    <JumpHistory Count="5" HistoryIndex="4">
+    <JumpHistory Count="21" HistoryIndex="20">
       <Position1>
         <Filename Value="mainform.pas"/>
         <Caret Line="109" Column="33" TopLine="96"/>
@@ -163,6 +165,70 @@
         <Filename Value="mainform.pas"/>
         <Caret Line="175" Column="36" TopLine="150"/>
       </Position5>
+      <Position6>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="81" Column="53" TopLine="71"/>
+      </Position6>
+      <Position7>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="9" Column="61" TopLine="43"/>
+      </Position7>
+      <Position8>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="186" Column="11" TopLine="178"/>
+      </Position8>
+      <Position9>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="81" Column="44" TopLine="66"/>
+      </Position9>
+      <Position10>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="126" Column="19" TopLine="122"/>
+      </Position10>
+      <Position11>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="82" Column="30" TopLine="69"/>
+      </Position11>
+      <Position12>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="137" Column="18" TopLine="117"/>
+      </Position12>
+      <Position13>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="108" Column="21" TopLine="97"/>
+      </Position13>
+      <Position14>
+        <Filename Value="filesform.pas"/>
+        <Caret Line="44" Column="71" TopLine="22"/>
+      </Position14>
+      <Position15>
+        <Filename Value="filesform.pas"/>
+        <Caret Line="48" Column="15" TopLine="38"/>
+      </Position15>
+      <Position16>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="119" Column="21" TopLine="100"/>
+      </Position16>
+      <Position17>
+        <Filename Value="filesform.pas"/>
+        <Caret Line="64" Column="49" TopLine="56"/>
+      </Position17>
+      <Position18>
+        <Filename Value="rccmd.pas"/>
+        <Caret Line="24" Column="46" TopLine="4"/>
+      </Position18>
+      <Position19>
+        <Filename Value="filesform.pas"/>
+        <Caret Line="84" Column="18" TopLine="63"/>
+      </Position19>
+      <Position20>
+        <Filename Value="filesform.pas"/>
+        <Caret Line="41" Column="27" TopLine="37"/>
+      </Position20>
+      <Position21>
+        <Filename Value="filesform.pas"/>
+        <Caret Line="9" Column="78"/>
+      </Position21>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

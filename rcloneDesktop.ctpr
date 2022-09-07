@@ -88,7 +88,9 @@
       <Unit5>
         <Filename Value="filesform.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmFiles"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit5>
       <Unit6>
         <Filename Value="formpanel.pas"/>

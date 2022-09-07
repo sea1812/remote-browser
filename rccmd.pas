@@ -21,6 +21,7 @@ function  DoListRemotes: string;
 procedure ParseRemoteNames(AIn: string; AOut: TStrings);
 function  RemoteExists(ARemote:string):boolean;
 function  ParamsToJson(AParams:string):TJSONData;
+function  RemoteLsjson(AAlias:string;APath:string):string;
 
 implementation
 
@@ -41,6 +42,22 @@ begin
   end;
   mStream.Free;
   mTmp.Free;
+end;
+
+function RemoteLsjson(AAlias: string; APath:string): string;
+var
+  mParams,mOutput:TStrings;
+begin
+  //执行rc lsjson
+  mOutput:=TStringList.Create;
+  mParams:=TStringList.Create;
+  mParams.Add('/c');
+  mParams.Add('.\rc lsjson '+Trim(AAlias)+':'+Trim(APath));
+
+  ExecuteCommand('c:\windows\system32\cmd.exe',mParams,mOutput,False);
+  Result := Trim(mOutput.Text);
+  mParams.Free;
+  mOutput.Free;
 end;
 
 function RemoteExists(ARemote: string): boolean;

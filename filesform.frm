@@ -3,11 +3,13 @@ object frmFiles: TfrmFiles
   Height = 602
   Top = 227
   Width = 750
+  BorderStyle = bsNone
   Caption = 'frmFiles'
   ClientHeight = 602
   ClientWidth = 750
   DesignTimePPI = 120
   OnClose = FormClose
+  OnShow = FormShow
   LCLVersion = '6.3'
   object StatusBar1: TCyPanel
     Left = 0
@@ -34,7 +36,7 @@ object frmFiles: TfrmFiles
       Flat = True
       OnClick = SpeedButton1Click
     end
-    object ComboBox1: TComboBox
+    object ComboPath: TComboBox
       Left = 188
       Height = 28
       Top = 5
@@ -43,10 +45,10 @@ object frmFiles: TfrmFiles
       BorderSpacing.Around = 5
       ItemHeight = 20
       TabOrder = 0
-      Text = 'ComboBox1'
+      Text = 'ComboPath'
     end
   end
-  object ListView1: TListView
+  object ListFiles: TListView
     Left = 0
     Height = 562
     Top = 40
