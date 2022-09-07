@@ -1,5 +1,5 @@
 object frmFiles: TfrmFiles
-  Left = 685
+  Left = 688
   Height = 602
   Top = 227
   Width = 750
@@ -44,6 +44,8 @@ object frmFiles: TfrmFiles
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderSpacing.Around = 5
       ItemHeight = 20
+      OnKeyUp = ComboPathKeyUp
+      OnSelect = ComboPathSelect
       TabOrder = 0
       Text = 'ComboPath'
     end
@@ -56,22 +58,27 @@ object frmFiles: TfrmFiles
     Align = alClient
     Columns = <    
       item
+        AutoSize = True
         Caption = '名称'
-        Width = 120
       end    
       item
+        AutoSize = True
         Caption = '修改日期'
-        Width = 120
+        Width = 80
       end    
       item
+        AutoSize = True
         Caption = '文件类型'
-        Width = 120
+        Width = 80
       end    
       item
+        AutoSize = True
         Caption = '大小'
-        Width = 120
       end>
+    ReadOnly = True
+    RowSelect = True
     TabOrder = 1
     ViewStyle = vsReport
+    OnDblClick = ListFilesDblClick
   end
 end

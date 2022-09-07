@@ -191,7 +191,7 @@ end;
 
 procedure TfrmMain.ToolButton6Click(Sender: TObject);
 begin
-  Self.AddFilesTab('webdav_1','2222');
+  Self.AddFilesTab('webdav_1','demo1');
 end;
 
 procedure TfrmMain.ToolHelpClick(Sender: TObject);

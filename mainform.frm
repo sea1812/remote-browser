@@ -782,6 +782,7 @@ object frmMain: TfrmMain
         end      
         item
           Caption = '本地盘符'
+          Visible = False
           Width = 100
         end      
         item
@@ -830,7 +831,7 @@ object frmMain: TfrmMain
     TabIndex = 0
     TabOrder = 5
     object TabSheet1: TTabSheet
-      Caption = 'TabSheet1'
+      Caption = 'Welcome'
     end
   end
   object ImageList1: TImageList

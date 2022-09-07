@@ -22,8 +22,33 @@ procedure ParseRemoteNames(AIn: string; AOut: TStrings);
 function  RemoteExists(ARemote:string):boolean;
 function  ParamsToJson(AParams:string):TJSONData;
 function  RemoteLsjson(AAlias:string;APath:string):string;
+function  ParentDir(ADir:string):string;
 
 implementation
+
+function  ParentDir(ADir:string):string;
+var
+  mTmp:TStrings;
+  i:integer;
+begin
+  Result:='';
+  mTmp := TStringList.Create;
+  ExtractStrings(['/'],[],PChar(ADir),mTmp);
+  if mTmp.Count>=1 then
+  begin
+    if mTmp.Count>1 then
+    begin
+      //组合
+      for i:=0 to mTmp.Count-2 do
+      begin
+        if (Trim(mTmp.Strings[i])<>'/') and (Trim(mTmp.Strings[i])<>'') then
+           Result:=Result+'/'+Trim(mTmp.Strings[i]);
+      end;
+    end;
+  end;
+  if Trim(Result)='' then
+    Result := '/';
+end;
 
 function  ParamsToJson(AParams:string):TJSONData;
 var
