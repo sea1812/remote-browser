@@ -5,8 +5,10 @@ unit filesform;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, cyPanel, Forms, Controls, Graphics, Dialogs, LCLIntf, LCLType,
-  ComCtrls, StdCtrls, ExtCtrls, Buttons, formpanel, rccmd, fpjson, jsonparser;
+  Classes, SysUtils, FileUtil, cyPanel, Forms, Controls, Graphics,
+  Dialogs, LCLIntf, LCLType, ComCtrls, StdCtrls, ExtCtrls, Buttons, Menus,
+  formpanel, rccmd, rxtoolbar,  fpjson,
+  jsonparser;
 
 type
 
@@ -27,9 +29,32 @@ type
 
   TfrmFiles = class(TForm)
     ComboPath: TComboBox;
+    ImageListFilesToolbar: TImageList;
     ListFiles: TListView;
+    MenuItem1: TMenuItem;
+    MenuItem10: TMenuItem;
+    MenuItem11: TMenuItem;
+    MenuItem12: TMenuItem;
+    MenuItem13: TMenuItem;
+    MenuItem14: TMenuItem;
+    MenuItem15: TMenuItem;
+    MenuItem16: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
+    MenuItem9: TMenuItem;
+    Panel1: TPanel;
+    PopActions: TPopupMenu;
+    PopDisk: TPopupMenu;
     SpeedButton1: TSpeedButton;
-    StatusBar1: TCyPanel;
+    ToolBar1: TToolBar;
+    ToolButton1: TToolButton;
+    ToolButton2: TToolButton;
+    ToolButton3: TToolButton;
     procedure ComboPathKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState
       );
     procedure ComboPathSelect(Sender: TObject);
@@ -117,7 +142,10 @@ begin
       begin
         Caption:=mITem.FindPath('Name').AsString;
         SubItems.Add(mItem.FindPath('ModTime').AsString);
-        SubItems.Add(mItem.FindPath('MimeType').AsString);
+        if Trim(mItem.FindPath('IsDir').AsString)='True' then
+          SubItems.Add('目录')
+        else
+          SubItems.Add(mItem.FindPath('MimeType').AsString);
         if Trim(mItem.FindPath('IsDir').AsString)='True' then
           SubItems.Add('')
         else

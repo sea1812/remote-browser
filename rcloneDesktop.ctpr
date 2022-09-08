@@ -26,37 +26,43 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="10">
+    <RequiredPackages Count="12">
       <Item1>
-        <PackageName Value="pl_zeosdbo"/>
+        <PackageName Value="pl_solutions"/>
       </Item1>
       <Item2>
-        <PackageName Value="pl_fzcontrols"/>
+        <PackageName Value="pl_eccontrols"/>
       </Item2>
       <Item3>
-        <PackageName Value="pl_excontrols"/>
+        <PackageName Value="pl_zeosdbo"/>
       </Item3>
       <Item4>
-        <PackageName Value="pl_virtualtreesextra"/>
+        <PackageName Value="pl_fzcontrols"/>
       </Item4>
       <Item5>
-        <PackageName Value="pl_virtualtrees"/>
+        <PackageName Value="pl_excontrols"/>
       </Item5>
       <Item6>
-        <PackageName Value="pl_rx"/>
+        <PackageName Value="pl_virtualtreesextra"/>
       </Item6>
       <Item7>
-        <PackageName Value="pl_bgracontrols"/>
+        <PackageName Value="pl_virtualtrees"/>
       </Item7>
       <Item8>
-        <PackageName Value="MyLazPackage"/>
+        <PackageName Value="pl_rx"/>
       </Item8>
       <Item9>
-        <PackageName Value="pl_cindy"/>
+        <PackageName Value="pl_bgracontrols"/>
       </Item9>
       <Item10>
-        <PackageName Value="adLCL"/>
+        <PackageName Value="MyLazPackage"/>
       </Item10>
+      <Item11>
+        <PackageName Value="pl_cindy"/>
+      </Item11>
+      <Item12>
+        <PackageName Value="adLCL"/>
+      </Item12>
     </RequiredPackages>
     <Units Count="7">
       <Unit0>
